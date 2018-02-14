@@ -1,0 +1,35 @@
+{%extends 'base.html' %}
+{% load static %}
+{% block mainpage %}
+<div class="slider">
+  <ul class="slides">
+    <li>
+      <img src="{% static 'image/start.jpg'  %}">
+      <div class="caption center-align">
+        <h3>P.Wannar</h3>
+        <h5 class="light grey-text text-lighten-3">P.wannar는 코딩그룹 스터디 플랫폼 서비스입니다.</h5>
+      </div>
+    </li>
+    <li>
+      <img src="{% static 'image/coding.jpg' %}">
+      <div class="caption left-align">
+        <h5 class="light grey-text text-lighten-3">무슨말을 넣을까요?</h5>
+      </div>
+    </li>
+    <li>
+      <img src="{% static 'image/finish.jpg' %}">
+      <div class="caption right-align">
+        <h5 class="light grey-text text-lighten-3">무슨말을 넣을까요?</h5>
+      </div>
+    </li>
+    <li>
+      <img src="{% static 'image/finish2.jpg' %}">
+      <div class="caption center-align">
+        <h5 class="light grey-text text-lighten-3">무슨말을 넣을까요?</h5>
+      </div>
+    </li>
+  </ul>
+</div>
+<section>
+</section>
+{% endblock %}

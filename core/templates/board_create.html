@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 100px;">
+<h5 style="text-align: center;"><a href="{% url 'core:board_list' %}" style="color: #9fc3e0;">동아리 홍보 게시판</a></h5>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">제출</button>
+</form>
+</div>
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+{% endblock %}

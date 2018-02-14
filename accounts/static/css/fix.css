@@ -1,0 +1,43 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+}
+
+div#divfont {
+    font-family: "Nanum Gothic";
+    font-size: 80px;
+    font-weight: 700;
+}
+
+
+nav#nav-fixed {
+    background-color: #9fc3e0;
+}
+span#span-fixed{
+    display: block;
+    width: 35%;
+}
+a.brand-logo#brand-logo-fixed{
+    margin-left: 15%;
+}
+
+nav#nav-content{
+    display: block;
+    margin-right: 50px;
+}
+
+div#ul-fixed{
+    display: block;
+    margin-right: 25%;
+}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% if request.user.profile == message.receiver %}
+    <h2>보낸이 : {{ message.sender }}</h2><br>
+  {% elif requst.user.profile == message.sender %}
+    <h2>받는 사람 : {{ message.receiver }}</h2><br>
+  {% endif %}
+  <h3>보낸시간 : {{ message.send_time|date:"Y.m.d"}}</h3><br>
+  <p>{{ message.content }}</p>
+  <form method="post" action="{% url 'message:message_delete' message.pk %}" >
+  {% csrf_token %}
+    <button type="submit">삭제</button>
+  </form>
+
+  {% if request.user.profile == message.receiver %}
+    <a href="{% url 'message:message_send' message.sender %}">
+      <button>답장</button>
+    </a>
+  {% endif %}
+{% endblock %}
