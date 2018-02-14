@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>이메일 인증을 완료해주세요</h2><br>
+  <a href="{% url 'accounts:resend' username  %}"><button>이메일 재전송</button></a>
+{% endblock %}

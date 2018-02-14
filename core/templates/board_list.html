@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="tag_list">
+  {% for tag in tag_list %}
+  <a href="{% url 'core:board_list_by_tag' tag.pk %}">
+    <div class="chip {% if tag == tag_selected %}selected{% endif %}">
+        {{ tag.name }}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+<div class="collection">
+    {% for article in board_list %}
+    <a class="collection-item" id="article_{{ article.pk }}" href="{% url 'core:board_detail' article.pk %}">{{ article.title }}</a>
+    {% empty %}
+    <li class="collection-item">게시글이 없습니다.</li>
+    {% endfor %}
+</div>
+
+<a id="create_button" href="{% url 'core:board_create' %}" class="waves-effect waves-light btn">글쓰기</a>
+
+{% endblock %}

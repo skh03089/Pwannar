@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile">
+  <h2>Welcome, {{ user.get_full_name }}</h2>
+  <img class="responsive-img" src="{{ profile.image_url }}">
+  <h4> {{ profile.user }} 님의 프로필 페이지입니다</h4>
+  <a href="{% url 'message:message_send' profile.user.username %}"><i class="material-icons">message</i></a>
+  <p>생일 : {{ profile.birth_date|default:"미입력" }}</p>
+  <p>학교 : {{ profile.school |default:"미입력" }}</p>
+  <p>지역 : {{ profile.location|default:"미입력" }}</p>
+  <p>자기소개 : {{ profile.bio|default:"미입력" }}</p>
+  <p>경력 : {{ profile.history|default:"미입력" }}</p>
+</div>
+{% if request.user.profile == profile %}
+  <a href="{% url 'accounts:edit_myinfo'%}" type="button" class="btn">프로필수정</a>
+{% endif %}
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s3"><a href="#test1" style="text-color:blue;">내가 했던 프로젝트</a></li>
+      <li class="tab col s3"><a class="active" href="#test2"style="text-color:blue;">P.wannar</a></li>
+    </ul>
+  </div>
+  <div id="test1">
+    <li>17.01.17 ~ 17.02.28</li>
+    <p style="margin-top:0px;"><strong>DoDream팀</strong>에서 <strong>Team Leader</strong>역할로 <a href="#">P.wannar Project</a>를 진행</p>
+  </div>
+  <div id="test2">
+    <table class="striped">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>이상민</td>
+          <td>팀장</td>
+          <td><a href="#">이상민's 프로필</a></td>
+        </tr>
+        <tr>
+          <td>권민지</td>
+          <td>인사담당</td>
+          <td><a href="#">권민지's 프로필</a></td>
+        </tr>
+        <tr>
+          <td>김소희</td>
+          <td>디자인담당</td>
+          <td><a href="#">김소희's 프로필</a></td>
+        </tr>
+        <tr>
+          <td>황인성</td>
+          <td>풀스택개발자</td>
+          <td><a href="#">황인성's 프로필</a></td>
+        </tr>
+        <tr>
+          <td>정유나</td>
+          <td>경영/홍보담당</td>
+          <td><a href="#">정유나's 프로필</a></td>
+        </tr>
+        <tr>
+          <td>이 송</td>
+          <td>정보담당</td>
+          <td><a href="#">이 송's 프로필</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

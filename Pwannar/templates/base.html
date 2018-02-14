@@ -1,0 +1,65 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pwannar</title>
+  <link href="{% static 'css/fix.css' %}" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+</head>
+<body>
+  {% if request.user.is_authenticated %}
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="{% url 'accounts:myinfo' request.user.username %}">프로필보기</a></li>
+    <li class="divider"></li>
+    <li><a href="{% url 'message:messages' %}">받은메세지함</a></li>
+    <li class="divider"></li>
+    <li><a href="{% url 'core:board_list' %}">동아리 게시판</a></li>
+  </ul>
+  {% endif %}
+  <nav id="nav-fixed">
+    <div class="nav-wrapper">
+      <a href="{% url 'core:mainpage' %}" class="brand-logo" id="brand-logo-fixed" style="left: 20px">P.Wannar<i class="small material-icons">local_florist</i></a>
+      <div id="ul-fixed">
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#"><i class="material-icons">search</i></a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#">
+            {% if user.is_authenticated %}
+              <a href="{% url 'accounts:signout' %}">로그아웃</a>
+            {% else %}
+              <a href="{% url 'accounts:signin' %}">로그인</a>
+              <li><a href="{% url 'accounts:create_user' %}">가입하기</a></li>
+            {% endif %}
+          </a></li>
+          {% if request.user.is_authenticated %}
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{ request.user }} <i class="material-icons right">arrow_drop_down</i></a></li>
+          {% else %}
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% block mainpage %}{% endblock %}
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+<script>
+  $(document).ready(function() {
+    $('.slider').slider({
+      height: 650,
+      transition: 1200,
+      interval: 10000,
+    });
+  });
+</script>
+</body>
+</html>
